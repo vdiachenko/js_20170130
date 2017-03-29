@@ -12,7 +12,7 @@ export default {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+                exclude: /node_modules|\.fest\.js$/,
                 loader: 'babel-loader'
             }
         ]
