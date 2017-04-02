@@ -14,6 +14,11 @@ export default {
                 test: /\.js$/,
                 exclude: /node_modules|\.fest\.js$/,
                 loader: 'babel-loader'
+            },
+
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
             }
         ]
     }
