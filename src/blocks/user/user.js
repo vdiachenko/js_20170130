@@ -1,3 +1,5 @@
+import config from '../../../package.json';
+
 export default class User {
 
     constructor() {
@@ -15,12 +17,24 @@ export default class User {
     }
 
     logout() {
-        if (!this.data) {
+        if (!this.isLoggedIn()) {
             return;
         }
 
         localStorage.removeItem('user');
         location.reload();
+    }
+
+    isLoggedIn() {
+        return Boolean(this.data);
+    }
+
+    update(data) {
+        if (!this.isLoggedIn() || !data) {
+            return;
+        }
+
+        this.data = data;
     }
 
     set data(data) {
@@ -39,6 +53,14 @@ export default class User {
         }
 
         return JSON.parse(data);
+    }
+
+    get notes() {
+        if (!this.data) {
+            return;
+        }
+
+        return this.data.notes;
     }
 
 }

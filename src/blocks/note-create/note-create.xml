@@ -1,0 +1,33 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <h1>Create new note</h1>
+
+    <form name="note" class="pure-form pure-form-aligned">
+        <fieldset>
+
+            <div class="pure-control-group">
+                <label for="name">Header</label>
+                <input type="text" name="header" placeholder="header" required="required"/>
+                <span class="pure-form-message-inline">This is a required field.</span>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="name">Text</label>
+                <textarea type="text" name="text" placeholder="text" required="required">
+                </textarea>
+                <span class="pure-form-message-inline">This is a required field.</span>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="name">Color</label>
+                <input type="text" name="color" placeholder="color" required="required"/>
+                <span class="pure-form-message-inline">This is a required field.</span>
+            </div>
+
+            <div class="pure-controls">
+                <button type="submit" class="pure-button pure-button-primary">Submit</button>
+            </div>
+
+        </fieldset>
+    </form>
+
+</fest:template>

@@ -40,6 +40,11 @@
       "error",
       "never"
     ],
-    "prefer-const": 2
+    "prefer-const": 2,
+    "no-multi-spaces": [1, {
+      "exceptions": {
+        "VariableDeclarator": true
+      }
+    }]
   }
 }

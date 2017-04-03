@@ -34,33 +34,23 @@ export default class Signup {
     }
 
     register() {
-        const data = JSON.stringify({
+        const method = 'POST';
+
+        const body = JSON.stringify({
             login: this.form.elements.login.value,
             password: this.form.elements.password.value,
             email: this.form.elements.email.value
         });
 
-        const xhr = new XMLHttpRequest();
-        const url = `https://${config.db.name}.restdb.io/rest/users`;
+        const headers = {
+            'x-apikey': config.db.apikey,
+            'Content-Type': 'application/json'
+        };
 
-        xhr.addEventListener('readystatechange', () => {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                const res = JSON.parse(xhr.responseText);
-
-                user.login(res);
-            }
-
-            if (xhr.readyState === XMLHttpRequest.ERROR) {
-                alert(xhr.responseText);
-            }
-        });
-
-        xhr.open('POST', url);
-        xhr.setRequestHeader('content-type', 'application/json');
-        xhr.setRequestHeader('x-apikey', config.db.apikey);
-        xhr.setRequestHeader('cache-control', 'no-cache');
-
-        xhr.send(data);
+        fetch(`https://${config.db.name}.restdb.io/rest/users`, { method, body, headers })
+            .then(response => response.json())
+            .then(data => user.login(data))
+            .catch(alert);
     }
 
 }

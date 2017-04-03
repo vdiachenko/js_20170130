@@ -51,29 +51,21 @@ export default class Login {
             return;
         }
 
-        const xhr = new XMLHttpRequest();
-        const url = `https://${config.db.name}.restdb.io/rest/users?q={"login":"${login}"}`;
+        const headers = {
+            'x-apikey': config.db.apikey,
+            'Content-Type': 'application/json'
+        };
 
-        xhr.addEventListener('readystatechange', () => {
-
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                const res = JSON.parse(xhr.responseText);
-
-                if (password === res[0].password) {
-                    user.login(res[0]);
+        fetch(`https://${config.db.name}.restdb.io/rest/users?q={"login":"${login}","password":"${password}"}&max=1`, { headers })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.length) {
+                    alert('Unknown data!');
+                } else {
+                    user.login(data[0]);
                 }
-            }
-
-            if (xhr.readyState === XMLHttpRequest.ERROR) {
-                alert(xhr.responseText);
-            }
-        });
-
-        xhr.open('GET', url);
-        xhr.setRequestHeader('x-apikey', config.db.apikey);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-
-        xhr.send();
+            })
+            .catch(alert);
     }
 
 }

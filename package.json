@@ -35,11 +35,13 @@
     "sass-loader": "^4.0.2",
     "webpack": "^2.3.2"
   },
-  "db": {
-    "name": "jscourse201701-419b",
-    "apikey": "86125ecde51eb3523b6e18168bc9724096a1c"
-  },
   "devDependencies": {
     "json-loader": "^0.5.4"
+  },
+  "db": {
+    "name": "jscourse201701-419b",
+    "name2": "jscourse20170130-04ae",
+    "apikey": "86125ecde51eb3523b6e18168bc9724096a1c",
+    "apikey2": "58e0ac6bf5b9511a0d56bd68"
   }
 }
